@@ -1,0 +1,35 @@
+version: '3.1'
+
+services:
+  postgres:
+    image: 'postgres:latest'
+    container_name: 'message-db'
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=mitra
+    restart: always
+
+  app_server:
+    image: 'message-server:latest'
+    build:
+      context: ./server/
+    container_name: 'message-server'
+    depends_on:
+      - postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/mitra
+    restart: always
+
+  app_client:
+    image: 'message-client:latest'
+    build:
+      context: ./client
+    container_name: 'message-client'
+    depends_on:
+      - app_server
+    ports:
+      - "8080:8080"
+    environment:
+      - MESSAGE_GATEWAY_HOST=message-server
+    restart: always
