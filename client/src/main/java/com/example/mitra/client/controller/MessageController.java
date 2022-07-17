@@ -1,6 +1,7 @@
 package com.example.mitra.client.controller;
 
-import com.example.mitra.client.dto.Message;
+//import com.example.mitra.client.dto.Message;
+import com.example.mitra.api.Message;
 import com.example.mitra.client.service.MessageRestTemplate;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;

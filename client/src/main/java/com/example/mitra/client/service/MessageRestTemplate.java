@@ -1,6 +1,6 @@
 package com.example.mitra.client.service;
 
-import com.example.mitra.client.dto.Message;
+import com.example.mitra.api.Message;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
